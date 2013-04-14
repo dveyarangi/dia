@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="lib/java/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="lib/java/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/java/fluent-hc-4.2.3.jar"/>
+	<classpathentry kind="lib" path="lib/java/guava-14.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/java/jsoup-1.7.2.jar"/>
+	<classpathentry kind="lib" path="lib/java/prefuse.jar"/>
+	<classpathentry kind="lib" path="lib/java/httpclient/httpclient-4.2.3.jar"/>
+	<classpathentry kind="lib" path="lib/java/httpclient/httpclient-cache-4.2.3.jar"/>
+	<classpathentry kind="lib" path="lib/java/httpclient/httpcore-4.2.2.jar"/>
+	<classpathentry kind="lib" path="lib/java/httpclient/httpmime-4.2.3.jar"/>
+	<classpathentry kind="lib" path="lib/java/neo4j/concurrentlinkedhashmap-lru-1.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/java/neo4j/geronimo-jta_1.1_spec-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/java/neo4j/lucene-core-3.5.0.jar"/>
+	<classpathentry kind="lib" path="lib/java/neo4j/neo4j-cypher-1.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/java/neo4j/neo4j-graph-algo-1.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/java/neo4j/neo4j-graph-matching-1.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/java/neo4j/neo4j-jmx-1.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/java/neo4j/neo4j-kernel-1.8.2.jar" sourcepath="F:/Development/db/neo4j-community-1.8.2/doc/java/api/META-INF"/>
+	<classpathentry kind="lib" path="lib/java/neo4j/neo4j-lucene-index-1.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/java/neo4j/neo4j-shell-1.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/java/neo4j/neo4j-udc-1.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/java/neo4j/org.apache.servicemix.bundles.jline-0.9.94_1.jar"/>
+	<classpathentry kind="lib" path="lib/java/neo4j/scala-library-2.9.1-1.jar"/>
+	<classpathentry kind="lib" path="lib/java/neo4j/server-api-1.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/java/log5j-2.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/java/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="lib/java/gson-2.2.3.jar"/>
+	<classpathentry kind="output" path="classes"/>
+</classpath>

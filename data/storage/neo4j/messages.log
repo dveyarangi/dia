@@ -1,0 +1,348 @@
+2013-04-14 08:30:18.972+0000: WARNING! You are using an unsupported version of the Java runtime. Please use Oracle(R) Java(TM) Runtime Environment 6.
+2013-04-14 08:30:19.084+0000: Creating new db @ C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore
+2013-04-14 08:30:19.285+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.nodestore.db] brickCount=0 brickSize=41940b mappedMem=4194304b (storeSize=0b)
+2013-04-14 08:30:19.322+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.nodestore.db hit=1 miss=0 switches=0 ooe=0
+2013-04-14 08:30:20.153+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.relationshiptypestore.db.names] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
+2013-04-14 08:30:20.156+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.relationshiptypestore.db] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
+2013-04-14 08:30:20.192+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.relationshiptypestore.db.names hit=0 miss=0 switches=0 ooe=0
+2013-04-14 08:30:20.322+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.relationshiptypestore.db hit=0 miss=0 switches=0 ooe=0
+2013-04-14 08:30:20.454+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.relationshiptypestore.db.names] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
+2013-04-14 08:30:20.455+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.relationshiptypestore.db] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
+2013-04-14 08:30:20.455+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db.strings] brickCount=0 brickSize=12544b mappedMem=12582912b (storeSize=128b)
+2013-04-14 08:30:20.456+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db.index.keys] brickCount=0 brickSize=1026b mappedMem=1048576b (storeSize=38b)
+2013-04-14 08:30:20.457+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db.index] brickCount=0 brickSize=10485b mappedMem=1048576b (storeSize=0b)
+2013-04-14 08:30:20.458+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db.arrays] brickCount=0 brickSize=14592b mappedMem=14680064b (storeSize=128b)
+2013-04-14 08:30:20.461+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db] brickCount=0 brickSize=157276b mappedMem=15728640b (storeSize=0b)
+2013-04-14 08:30:20.463+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.relationshipstore.db] brickCount=0 brickSize=188727b mappedMem=18874368b (storeSize=0b)
+2013-04-14 08:30:20.463+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.nodestore.db] brickCount=0 brickSize=4194b mappedMem=4194304b (storeSize=9b)
+2013-04-14 08:30:20.464+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
+2013-04-14 08:30:20.600+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.relationshiptypestore.db.names hit=0 miss=0 switches=0 ooe=0
+2013-04-14 08:30:20.697+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.relationshiptypestore.db hit=0 miss=0 switches=0 ooe=0
+2013-04-14 08:30:20.788+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db.strings hit=0 miss=0 switches=0 ooe=0
+2013-04-14 08:30:20.880+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db.index.keys hit=0 miss=0 switches=0 ooe=0
+2013-04-14 08:30:20.973+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db.index hit=0 miss=0 switches=0 ooe=0
+2013-04-14 08:30:21.063+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db.arrays hit=0 miss=0 switches=0 ooe=0
+2013-04-14 08:30:21.147+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db hit=0 miss=0 switches=0 ooe=0
+2013-04-14 08:30:21.255+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.relationshipstore.db hit=0 miss=0 switches=0 ooe=0
+2013-04-14 08:30:21.522+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.nodestore.db hit=0 miss=0 switches=0 ooe=0
+2013-04-14 08:30:21.961+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore hit=0 miss=8 switches=0 ooe=0
+2013-04-14 08:30:22.136+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.relationshiptypestore.db.names] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
+2013-04-14 08:30:22.137+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.relationshiptypestore.db] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
+2013-04-14 08:30:22.137+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db.strings] brickCount=0 brickSize=12544b mappedMem=12582912b (storeSize=128b)
+2013-04-14 08:30:22.138+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db.index.keys] brickCount=0 brickSize=1026b mappedMem=1048576b (storeSize=38b)
+2013-04-14 08:30:22.139+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db.index] brickCount=0 brickSize=10485b mappedMem=1048576b (storeSize=0b)
+2013-04-14 08:30:22.140+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db.arrays] brickCount=0 brickSize=14592b mappedMem=14680064b (storeSize=128b)
+2013-04-14 08:30:22.140+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db] brickCount=0 brickSize=157276b mappedMem=15728640b (storeSize=0b)
+2013-04-14 08:30:22.141+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.relationshipstore.db] brickCount=0 brickSize=188727b mappedMem=18874368b (storeSize=0b)
+2013-04-14 08:30:22.142+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.nodestore.db] brickCount=0 brickSize=4194b mappedMem=4194304b (storeSize=9b)
+2013-04-14 08:30:22.142+0000: [C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore] brickCount=0 brickSize=0b mappedMem=0b (storeSize=54b)
+2013-04-14 08:30:22.154+0000: Opened logical log [C:\Users\fimar\Desktop\dia\data\storage\neo4j\nioneo_logical.log.1] version=0, lastTxId=1 (clean)
+2013-04-14 08:30:22.273+0000: TM new log: tm_tx_log.1
+2013-04-14 08:30:22.387+0000: Opened logical log [C:\Users\fimar\Desktop\dia\data\storage\neo4j\index\lucene.log.1] version=0, lastTxId=1 (clean)
+2013-04-14 08:30:22.421+0000: --- STARTUP diagnostics START ---
+2013-04-14 08:30:22.422+0000: Neo4j Kernel properties:
+    forced_kernel_id=
+    read_only=false
+    neo4j.ext.udc.host=udc.neo4j.org
+    logical_log=nioneo_logical.log
+    node_auto_indexing=false
+    intercept_committing_transactions=false
+    remote_shell_name=shell
+    cache_type=soft
+    intercept_deserialized_transactions=false
+    lucene_searcher_cache_size=2147483647
+    neo4j.ext.udc.interval=86400000
+    use_memory_mapped_buffers=false
+    rebuild_idgenerators_fast=true
+    neostore.propertystore.db.index.keys.mapped_memory=1M
+    neostore.propertystore.db.arrays.mapped_memory=14M
+    neostore.propertystore.db.strings.mapped_memory=12M
+    log_mapped_memory_stats_filename=mapped_memory_stats.log
+    log_mapped_memory_stats_interval=1000000
+    gcr_cache_min_log_interval=60s
+    relationship_grab_size=100
+    relationship_auto_indexing=false
+    remote_shell_read_only=false
+    node_cache_array_fraction=1.0
+    allow_store_upgrade=false
+    execution_guard_enabled=false
+    relationship_cache_array_fraction=1.0
+    remote_logging_host=127.0.0.1
+    store_dir=./data/storage/neo4j
+    online_backup_enabled=false
+    remote_logging_port=4560
+    gc_monitor_threshold=200ms
+    array_block_size=120
+    load_kernel_extensions=true
+    neostore.relationshipstore.db.mapped_memory=18M
+    keep_logical_logs=true
+    dump_configuration=false
+    gc_monitor_wait_time=100ms
+    neostore.nodestore.db.mapped_memory=4M
+    neo4j.ext.udc.first_delay=600000
+    remote_shell_enabled=false
+    neo4j.ext.udc.reg=unreg
+    remote_shell_port=1337
+    ephemeral=false
+    log_mapped_memory_stats=false
+    neo_store=neostore
+    mapped_memory_page_size=1M
+    query_cache_size=100
+    logging.threshold_for_rotation=104857600
+    neostore.propertystore.db.index.mapped_memory=1M
+    backup_slave=false
+    neostore.propertystore.db.mapped_memory=15M
+    string_block_size=120
+    grab_file_lock=true
+    remote_logging_enabled=false
+    neo4j.ext.udc.enabled=true
+    all_stores_total_mapped_memory_size=500M
+    online_backup_port=6362
+2013-04-14 08:30:22.426+0000: Diagnostics providers:
+    org.neo4j.kernel.configuration.Config
+    org.neo4j.kernel.info.DiagnosticsManager
+    SYSTEM_MEMORY
+    JAVA_MEMORY
+    OPERATING_SYSTEM
+    JAVA_VIRTUAL_MACHINE
+    CLASSPATH
+    LIBRARY_PATH
+    SYSTEM_PROPERTIES
+    NETWORK
+2013-04-14 08:30:22.427+0000: System memory information:
+    Total Physical memory: 2.00 GB
+    Free Physical memory: 899.73 MB
+    Committed virtual memory: 46.02 MB
+    Total swap space: 4.00 GB
+    Free swap space: 3.38 GB
+2013-04-14 08:30:22.645+0000: JVM memory information:
+    Free  memory: 12.15 MB
+    Total memory: 15.50 MB
+    Max   memory: 247.50 MB
+    Garbage Collector: Copy: [Eden Space, Survivor Space]
+    Garbage Collector: MarkSweepCompact: [Eden Space, Survivor Space, Tenured Gen, Perm Gen, Perm Gen [shared-ro], Perm Gen [shared-rw]]
+    Memory Pool: Code Cache (Non-heap memory): committed=896.00 kB, used=884.63 kB, max=32.00 MB, threshold=0.00 B
+    Memory Pool: Eden Space (Heap memory): committed=4.31 MB, used=835.26 kB, max=68.31 MB, threshold=?
+    Memory Pool: Survivor Space (Heap memory): committed=512.00 kB, used=511.99 kB, max=8.50 MB, threshold=?
+    Memory Pool: Tenured Gen (Heap memory): committed=10.69 MB, used=2.04 MB, max=170.69 MB, threshold=0.00 B
+    Memory Pool: Perm Gen (Non-heap memory): committed=12.00 MB, used=2.57 MB, max=64.00 MB, threshold=0.00 B
+    Memory Pool: Perm Gen [shared-ro] (Non-heap memory): committed=10.00 MB, used=4.51 MB, max=10.00 MB, threshold=0.00 B
+    Memory Pool: Perm Gen [shared-rw] (Non-heap memory): committed=12.00 MB, used=6.53 MB, max=12.00 MB, threshold=0.00 B
+2013-04-14 08:30:22.914+0000: Operating system information:
+    Operating System: Windows 7; version: 6.1; arch: x86; cpus: 4
+    Process id: 41388@TA-FIMAR-W7
+    Byte order: LITTLE_ENDIAN
+    Local timezone: Asia/Jerusalem
+2013-04-14 08:30:23.267+0000: JVM information:
+    VM Name: Java HotSpot(TM) Client VM
+    VM Vendor: Oracle Corporation
+    VM Version: 22.1-b02
+    JIT compiler: HotSpot Client Compiler
+    VM Arguments: [-Dfile.encoding=Cp1255]
+2013-04-14 08:30:23.309+0000: Java classpath:
+     [bootstrap] C:\Program Files\Java\jdk1.7.0_03\jre\lib\charsets.jar
+     [bootstrap] C:\Program Files\Java\jdk1.7.0_03\jre\lib\rt.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/neo4j/neo4j-graph-matching-1.8.2.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/guava-14.0.1.jar
+     [loader.1] file:/C:/Program%20Files/Java/jdk1.7.0_03/jre/lib/ext/zipfs.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/neo4j/scala-library-2.9.1-1.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/neo4j/org.apache.servicemix.bundles.jline-0.9.94_1.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/prefuse.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/log4j-1.2.17.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/jsoup-1.7.2.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/httpclient/httpmime-4.2.3.jar
+     [loader.1] file:/C:/Program%20Files/Java/jdk1.7.0_03/jre/lib/ext/sunjce_provider.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/neo4j/neo4j-kernel-1.8.2.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/commons-logging-1.1.1.jar
+     [loader.1] file:/C:/Program%20Files/Java/jdk1.7.0_03/jre/lib/ext/sunpkcs11.jar
+     [bootstrap] C:\Program Files\Java\jdk1.7.0_03\jre\lib\sunrsasign.jar
+     [bootstrap] C:\Program Files\Java\jdk1.7.0_03\jre\classes
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/httpclient/httpclient-4.2.3.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/neo4j/neo4j-cypher-1.8.2.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/commons-codec-1.6.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/classes/
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/log5j-2.1.2.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/neo4j/server-api-1.8.2.jar
+     [bootstrap] C:\Program Files\Java\jdk1.7.0_03\jre\lib\jce.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/neo4j/neo4j-udc-1.8.2.jar
+     [bootstrap] C:\Program Files\Java\jdk1.7.0_03\jre\lib\resources.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/neo4j/neo4j-shell-1.8.2.jar
+     [loader.1] file:/C:/Program%20Files/Java/jdk1.7.0_03/jre/lib/ext/localedata.jar
+     [loader.1] file:/C:/Program%20Files/Java/jdk1.7.0_03/jre/lib/ext/sunec.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/httpclient/httpclient-cache-4.2.3.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/neo4j/neo4j-lucene-index-1.8.2.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/httpclient/httpcore-4.2.2.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/neo4j/lucene-core-3.5.0.jar
+     [bootstrap] C:\Program Files\Java\jdk1.7.0_03\jre\lib\jsse.jar
+     [loader.1] file:/C:/Program%20Files/Java/jdk1.7.0_03/jre/lib/ext/dnsns.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/neo4j/neo4j-graph-algo-1.8.2.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/neo4j/concurrentlinkedhashmap-lru-1.3.1.jar
+     [loader.1] file:/C:/Program%20Files/Java/jdk1.7.0_03/jre/lib/ext/sunmscapi.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/neo4j/neo4j-jmx-1.8.2.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/neo4j/geronimo-jta_1.1_spec-1.1.1.jar
+     [classpath + loader.0] file:/C:/Users/fimar/Desktop/dia/lib/java/fluent-hc-4.2.3.jar
+2013-04-14 08:30:23.366+0000: Library path:
+    C:\Program Files\Java\jdk1.7.0_03\jre\bin
+    C:\Windows\Sun\Java\bin
+    C:\Windows\System32
+    C:\Windows
+    C:\Program Files\Java\jre7\bin\client
+    C:\Program Files\Java\jre7\bin
+    C:\Program Files\Java\jre7\lib\i386
+    C:\Perl\site\bin
+    C:\Perl\bin
+    C:\Program Files\Common Files\microsoft shared\Windows Live
+    C:\Windows\System32
+    C:\Windows
+    C:\Windows\System32\wbem
+    C:\Windows\System32\WindowsPowerShell\v1.0
+    C:\Program Files\Windows Live\Shared
+    C:\Program Files\Seapine\TestTrack
+    C:\Windows\System32\WindowsPowerShell\v1.0
+    C:\Program Files\Perforce
+    C:\development\eclipse-3.7.1
+    C:\Users\fimar\Desktop\dia
+    C:\Users\fimar\Desktop\dia
+2013-04-14 08:30:23.371+0000: System.properties:
+    sun.boot.library.path = C:\Program Files\Java\jdk1.7.0_03\jre\bin
+    path.separator = ;
+    file.encoding.pkg = sun.io
+    user.country = US
+    user.script = 
+    sun.java.launcher = SUN_STANDARD
+    sun.os.patch.level = Service Pack 1
+    user.dir = C:\Users\fimar\Desktop\dia
+    user.variant = 
+    sun.jnu.encoding = Cp1255
+    sun.management.compiler = HotSpot Client Compiler
+    user.home = C:\Users\fimar
+    user.timezone = Asia/Jerusalem
+    file.encoding = Cp1255
+    user.name = fimar
+    sun.java.command = dia.server.Dia
+    sun.arch.data.model = 32
+    user.language = en
+    awt.toolkit = sun.awt.windows.WToolkit
+    file.separator = \
+    sun.io.unicode.encoding = UnicodeLittle
+    sun.cpu.endian = little
+    sun.desktop = windows
+    sun.cpu.isalist = pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86
+2013-04-14 08:30:23.391+0000: Network information:
+    Interface Software Loopback Interface 1:
+        address: 127.0.0.1
+        address: 0:0:0:0:0:0:0:1
+    Interface WAN Miniport (SSTP):
+    Interface WAN Miniport (L2TP):
+    Interface WAN Miniport (PPTP):
+    Interface WAN Miniport (PPPOE):
+    Interface WAN Miniport (IPv6):
+    Interface WAN Miniport (Network Monitor):
+    Interface WAN Miniport (IP):
+    Interface RAS Async Adapter:
+    Interface WAN Miniport (IKEv2):
+    Interface Intel(R) 82579V Gigabit Network Connection:
+        address: 10.0.0.153
+        address: fd6f:9d5e:221e:0:600e:d149:474:7b96
+        address: fd6f:9d5e:221e:0:99fb:a1d6:9e3a:bed0
+        address: fe80:0:0:0:600e:d149:474:7b96%11
+    Interface Microsoft ISATAP Adapter:
+        address: fe80:0:0:0:0:5efe:a00:99%12
+    Interface Microsoft ISATAP Adapter #2:
+    Interface Intel(R) 82579V Gigabit Network Connection-QoS Packet Scheduler-0000:
+    Interface Intel(R) 82579V Gigabit Network Connection-WFP LightWeight Filter-0000:
+    Interface WAN Miniport (Network Monitor)-QoS Packet Scheduler-0000:
+    Interface WAN Miniport (IP)-QoS Packet Scheduler-0000:
+    Interface WAN Miniport (IPv6)-QoS Packet Scheduler-0000:
+2013-04-14 08:30:23.476+0000: --- STARTUP diagnostics END ---
+2013-04-14 08:30:23.510+0000: Recovery completed, all transactions have been resolved to a consistent state.
+2013-04-14 08:30:24.816+0000: Extension org.neo4j.kernel.KernelExtension[kernel jmx] loaded ok
+2013-04-14 08:30:24.855+0000: Extension org.neo4j.kernel.KernelExtension[kernel udc] loaded ok
+2013-04-14 08:30:24.855+0000: Extension org.neo4j.kernel.KernelExtension[shell] loaded ok
+2013-04-14 08:30:24.874+0000: --- STARTUP diagnostics for KernelDiagnostics:Versions START ---
+2013-04-14 08:30:24.874+0000: Graph Database: org.neo4j.kernel.EmbeddedGraphDatabase StoreId[time:1365928219085, id:757688828798619329, store version: 13561656364791302]
+2013-04-14 08:30:24.875+0000: Kernel version: Neo4j - Graph Database Kernel 1.8.2
+2013-04-14 08:30:24.875+0000: Neo4j component versions:
+2013-04-14 08:30:24.875+0000:   Neo4j - Graph Database Kernel 1.8.2
+2013-04-14 08:30:24.876+0000: --- STARTUP diagnostics for KernelDiagnostics:Versions END ---
+2013-04-14 08:30:24.877+0000: --- STARTUP diagnostics for NEO_STORE_VERSIONS START ---
+2013-04-14 08:30:24.878+0000: Store versions:
+    Store versions:
+      NeoStore v0.A.0
+      NodeStore v0.A.0
+      RelationshipStore v0.A.0
+      RelationshipTypeStore v0.A.0
+      PropertyStore v0.A.0
+      PropertyIndexStore v0.A.0
+      StringPropertyStore v0.A.0
+      ArrayPropertyStore v0.A.0
+2013-04-14 08:30:24.878+0000: --- STARTUP diagnostics for NEO_STORE_VERSIONS END ---
+2013-04-14 08:30:24.878+0000: --- STARTUP diagnostics for NEO_STORE_ID_USAGE START ---
+2013-04-14 08:30:24.878+0000: Id usage:
+    Id usage:
+      NodeStore: used=1 high=0
+      RelationshipStore: used=0 high=-1
+      RelationshipTypeStore: used=0 high=-1
+      PropertyStore: used=0 high=-1
+      PropertyIndexStore: used=0 high=-1
+      StringPropertyStore: used=1 high=0
+      ArrayPropertyStore: used=1 high=0
+2013-04-14 08:30:24.879+0000: --- STARTUP diagnostics for NEO_STORE_ID_USAGE END ---
+2013-04-14 08:30:24.879+0000: --- STARTUP diagnostics for PERSISTENCE_WINDOW_POOL_STATS START ---
+2013-04-14 08:30:24.879+0000: --- STARTUP diagnostics for PERSISTENCE_WINDOW_POOL_STATS END ---
+2013-04-14 08:30:24.879+0000: --- STARTUP diagnostics for KernelDiagnostics:StoreFiles START ---
+2013-04-14 08:30:24.882+0000: Disk space on partition (Total / Free / Free %): 107381026816 / 53210312704 / 50
+Storage files: (filename : modification date - size)
+      active_tx_log: 2013-04-14T11:30:22+0300 - 11.00 B
+      index:
+        lucene-store.db: 2013-04-14T11:30:22+0300 - 40.00 B
+        lucene.log.1: 2013-04-14T11:30:23+0300 - 16.00 B
+        lucene.log.active: 2013-04-14T11:30:22+0300 - 4.00 B
+      - Total: 2013-04-14T11:30:22+0300 - 60.00 B
+      lock: 2013-04-14T11:30:22+0300 - 0.00 B
+      messages.log: 2013-04-14T11:30:18+0300 - 18.80 kB
+      neostore: 2013-04-14T11:30:22+0300 - 54.00 B
+      neostore.id: 2013-04-14T11:30:22+0300 - 9.00 B
+      neostore.nodestore.db: 2013-04-14T11:30:22+0300 - 9.00 B
+      neostore.nodestore.db.id: 2013-04-14T11:30:21+0300 - 9.00 B
+      neostore.propertystore.db: 2013-04-14T11:30:22+0300 - 0.00 B
+      neostore.propertystore.db.arrays: 2013-04-14T11:30:22+0300 - 128.00 B
+      neostore.propertystore.db.arrays.id: 2013-04-14T11:30:21+0300 - 9.00 B
+      neostore.propertystore.db.id: 2013-04-14T11:30:21+0300 - 9.00 B
+      neostore.propertystore.db.index: 2013-04-14T11:30:22+0300 - 0.00 B
+      neostore.propertystore.db.index.id: 2013-04-14T11:30:20+0300 - 9.00 B
+      neostore.propertystore.db.index.keys: 2013-04-14T11:30:22+0300 - 38.00 B
+      neostore.propertystore.db.index.keys.id: 2013-04-14T11:30:20+0300 - 9.00 B
+      neostore.propertystore.db.strings: 2013-04-14T11:30:22+0300 - 128.00 B
+      neostore.propertystore.db.strings.id: 2013-04-14T11:30:20+0300 - 9.00 B
+      neostore.relationshipstore.db: 2013-04-14T11:30:22+0300 - 0.00 B
+      neostore.relationshipstore.db.id: 2013-04-14T11:30:21+0300 - 9.00 B
+      neostore.relationshiptypestore.db: 2013-04-14T11:30:22+0300 - 0.00 B
+      neostore.relationshiptypestore.db.id: 2013-04-14T11:30:20+0300 - 9.00 B
+      neostore.relationshiptypestore.db.names: 2013-04-14T11:30:22+0300 - 38.00 B
+      neostore.relationshiptypestore.db.names.id: 2013-04-14T11:30:20+0300 - 9.00 B
+      nioneo_logical.log.1: 2013-04-14T11:30:23+0300 - 16.00 B
+      nioneo_logical.log.active: 2013-04-14T11:30:22+0300 - 4.00 B
+      store_lock: 2013-04-14T11:30:18+0300 - 0.00 B
+      tm_tx_log.1: 2013-04-14T11:30:23+0300 - 0.00 B
+2013-04-14 08:30:24.890+0000: --- STARTUP diagnostics for KernelDiagnostics:StoreFiles END ---
+2013-04-14 08:30:24.891+0000: Started - database is now available
+2013-04-14 08:30:24.892+0000: GC Monitor started. 
+2013-04-14 08:31:56.790+0000: Stopping - database is now unavailable
+2013-04-14 08:31:56.871+0000: GC Monitor stopped. 
+2013-04-14 08:31:56.943+0000: TM shutting down
+2013-04-14 08:31:58.429+0000: Closed log C:\Users\fimar\Desktop\dia\data\storage\neo4j\index\lucene.log
+2013-04-14 08:31:59.325+0000: Closed log C:\Users\fimar\Desktop\dia\data\storage\neo4j\nioneo_logical.log
+2013-04-14 08:31:59.369+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.relationshiptypestore.db.names hit=0 miss=1 switches=0 ooe=0
+2013-04-14 08:31:59.524+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.relationshiptypestore.db hit=0 miss=1 switches=0 ooe=0
+2013-04-14 08:31:59.699+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db.strings hit=1254 miss=0 switches=0 ooe=0
+2013-04-14 08:31:59.864+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db.index.keys hit=2 miss=0 switches=0 ooe=0
+2013-04-14 08:32:00.034+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db.index hit=2 miss=0 switches=0 ooe=0
+2013-04-14 08:32:00.235+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db.arrays hit=0 miss=0 switches=0 ooe=0
+2013-04-14 08:32:00.403+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.propertystore.db hit=1280 miss=0 switches=0 ooe=0
+2013-04-14 08:32:00.582+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.relationshipstore.db hit=1642 miss=0 switches=0 ooe=0
+2013-04-14 08:32:00.724+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore.nodestore.db hit=3043 miss=0 switches=0 ooe=0
+2013-04-14 08:32:00.877+0000: C:\Users\fimar\Desktop\dia\data\storage\neo4j\neostore hit=0 miss=1418 switches=0 ooe=0
+2013-04-14 08:32:00.994+0000: NeoStore closed
+2013-04-14 08:32:00.994+0000: --- SHUTDOWN diagnostics START ---
+2013-04-14 08:32:00.994+0000: --- SHUTDOWN diagnostics END ---
