@@ -2,6 +2,8 @@ package dia.server.crawler;
 
 import org.apache.log4j.Logger;
 
+import dia.api.ArticleNode;
+import dia.api.CategoryNode;
 import dia.api.DNode;
 import dia.server.store.DiaStore;
 
@@ -25,27 +27,36 @@ public class WikiLinkConsumer implements ILinkConsumer
 	@Override
 	public int consume(DNode homeNode, String url)
 	{
-		if(!url.startsWith( "/wiki" )) {
+		if( !url.startsWith( "/wiki" ) ) {
 			return 0;
 		}
 		
-		if(url.contains( ":" )) {
-			return 0;
+		String name = url.substring(6);
+		if( name.contains( ":" ) )
+		{
+			String [] parts = name.split(":");
+			if(!parts[0].equals("Category")) {
+				return 0;
+			}
+			CategoryNode node = new CategoryNode(parts[1]);
+				
+			store.updateCategoryNode( node );
+			
+			return 1;
 		}
 		
-		String name = url.substring( 6 ); // dropping "/wiki"
-		
-		DNode node = DNode.create( name );
-		node.setUrl( baseUrl + url );
-		node.setLanguage( language );
+		ArticleNode node = new ArticleNode( name, baseUrl + url, language );
+		store.updateArticleNode( node );
+		if(homeNode instanceof ArticleNode) {
+			store.hyperlinkNodes( homeNode, node );
+		} else {
+			store.addToCategory( homeNode, node);
+		}
 		
 		if(log.isTraceEnabled()) {
 			log.trace( "Consumed link -> " + node + "");
 		}
 		
-		store.updateNode( node );
-		
-		store.hyperlinkNodes( homeNode, node );
 				
 		return 1;
 	}

@@ -1,6 +1,6 @@
 package dia.server;
 
-import dia.api.DNode;
+import dia.api.CategoryNode;
 import dia.server.config.DiaConfig;
 import dia.server.crawler.DiaCrawler;
 import dia.server.crawler.ILinkConsumer;
@@ -72,12 +72,13 @@ public class Dia
 		ILinkConsumer consumer = new WikiLinkConsumer( store, language );
 		
 		// starting node for tests:
-		DNode rootNode = DNode.create( "Nuclear_fusion" );
-		rootNode.setUrl( "http://en.wikipedia.org/wiki/Nuclear_fusion" );
-		store.updateNode( rootNode );
+		CategoryNode rootNode = new CategoryNode( "Physics" );
+		String rootUrl = "http://en.wikipedia.org/wiki/Category:Physics";
+		
+		store.updateCategoryNode( rootNode );
 		
 		// do crawl:
-		int count = crawler.extractLinks( rootNode, consumer );
+		int count = crawler.extractLinks( rootNode, rootUrl, consumer );
 		
 		System.out.println("Links processed: " + count);
 	}

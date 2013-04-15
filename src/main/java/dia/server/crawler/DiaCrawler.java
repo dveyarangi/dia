@@ -45,10 +45,8 @@ public class DiaCrawler
 	 * @param consumer
 	 * @return number of links processed
 	 */
-	public int extractLinks(DNode homeNode, ILinkConsumer consumer)
+	public int extractLinks(DNode homeNode, String url, ILinkConsumer consumer)
 	{
-		
-		String url = homeNode.getUrl();
 		log.trace( "Extracting links from [" + url + "]." );
 		
 		// reading html to string:
