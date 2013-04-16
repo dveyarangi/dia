@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -16,7 +15,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import dia.api.DNode;
 import dia.server.config.DiaConfig;
 
 public class DiaCrawler
@@ -82,8 +80,10 @@ public class DiaCrawler
 			// walking over links:
 			Elements links = doc.select("a[href]");
 			
-			int count = 0;
-			log.debug( "Extracting links from [" + url + "] (" + links.size() + " found): " );
+			int nodesCount = 0, linksCount = 0;
+			log.debug( "Processing links from [" + url + "] (" + links.size() + " found): " );
+			int percentageCount = 0;
+			System.out.print("[");
 			
 			for(int idx = 0; idx < links.size(); idx ++)
 			{
@@ -92,18 +92,23 @@ public class DiaCrawler
 				
 				// sending link to the link processor:
 				String nodeName = consumer.consume( parentName, ref );
+				
+				if(idx * 100 / links.size() > percentageCount) {
+					percentageCount += 1;
+					System.out.print(".");
+				}
+				
 				if(nodeName == null)
 					continue;
-				System.out.print(".");
 				linksQueue.put( ref, nodeName );
 				
-				count ++;
+				nodesCount ++;
 			}
-			System.out.println("");
+			System.out.println("]");
 			
 			
-			log.debug( "Extracted [" + count + "] links; queue size [" + linksQueue.size() + "]." );
-			totalCount += count;
+			log.debug( "Extracted [" + nodesCount + "] nodes; queue size [" + linksQueue.size() + "]." );
+			totalCount += nodesCount;
 		}
 		
 		return totalCount;
