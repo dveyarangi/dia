@@ -16,10 +16,11 @@ public interface DiaStore
 	public void updateArticleNode(ArticleNode dianode);
 	public void updateCategoryNode(CategoryNode dianode);
 	
-	public void hyperlinkNodes(DNode dianodea, DNode dianodeb);
+	public void addHyperlink(DNode dianodea, DNode dianodeb);
 	/**
 	 * @param homeNode
 	 * @param node
 	 */
-	public void addToCategory(DNode homeNode, ArticleNode node);
+	public void addToCategory(CategoryNode category, ArticleNode article);
+	public void addSubcategory(CategoryNode category, CategoryNode subcategory);
 }

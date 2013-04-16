@@ -1,11 +1,6 @@
 package dia.server.store.neo4j;
 
-import static dia.server.store.neo4j.Infrastructure.HYPERLINK;
-import static dia.server.store.neo4j.Infrastructure.IN_CATEGORY;
-import static dia.server.store.neo4j.Infrastructure.NODE_LANG;
-import static dia.server.store.neo4j.Infrastructure.NODE_NAME;
-import static dia.server.store.neo4j.Infrastructure.NODE_TYPE;
-import static dia.server.store.neo4j.Infrastructure.NODE_URL;
+import static dia.server.store.neo4j.Infrastructure.*;
 
 import org.apache.log4j.Logger;
 import org.neo4j.graphdb.Direction;
@@ -18,6 +13,8 @@ import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import org.neo4j.graphdb.index.Index;
 import org.neo4j.graphdb.index.IndexHits;
 import org.neo4j.graphdb.index.IndexManager;
+
+import com.google.common.base.Preconditions;
 
 import dia.api.ArticleNode;
 import dia.api.CategoryNode;
@@ -85,9 +82,9 @@ public class Neo4JStore implements DiaStore
 				// updating index:
 				articles.add( neonode, NODE_NAME, nodeName );
 				
-				log.trace( "Created new node [" + neonode.getId() + ":" + dianode.getName() + "]." );
+				log.trace( "Created new article node [" + neonode.getId() + ":" + dianode.getName() + "]." );
 			} else {
-				log.trace( "Updated existing node [" + neonode.getId() + ":" + dianode.getName() + "]." );
+				log.trace( "Updated existing article node [" + neonode.getId() + ":" + dianode.getName() + "]." );
 			}
 			
 			// setting values:
@@ -121,9 +118,9 @@ public class Neo4JStore implements DiaStore
 				// updating index:
 				categories.add( neonode, NODE_NAME, nodeName );
 				
-				log.trace( "Created new node [" + neonode.getId() + ":" + dianode.getName() + "]." );
+				log.trace( "Created new category node [" + neonode.getId() + ":" + dianode.getName() + "]." );
 			} else {
-				log.trace( "Updated existing node [" + neonode.getId() + ":" + dianode.getName() + "]." );
+				log.trace( "Updated existing category node [" + neonode.getId() + ":" + dianode.getName() + "]." );
 			}
 			
 			// setting values:
@@ -160,21 +157,27 @@ public class Neo4JStore implements DiaStore
 	}
 	
 	@Override
-	public void hyperlinkNodes(DNode dianodea, DNode dianodeb)
+	public void addHyperlink(DNode dianodea, DNode dianodeb)
 	{
 		linkNodes(dianodea, articles, HYPERLINK, dianodeb, articles, null);
 	}
 	@Override
-	public void addToCategory(DNode category, ArticleNode dianode)
+	public void addToCategory(CategoryNode category, ArticleNode dianode)
 	{
-		linkNodes(category, categories, IN_CATEGORY, dianode, articles, null);
+		linkNodes(category, categories, null, dianode, articles, IN_CATEGORY);
 
+	}
+	
+	@Override
+	public void addSubcategory(CategoryNode category, CategoryNode subcategory)
+	{
+		linkNodes(category, categories, null, subcategory, categories, SUBCATEGORY_OF);
 	}
 	///////////////////////////////////////////////////////////////
 	private void linkNodes(DNode dianodea, Index indexa, RelationshipType typea, DNode dianodeb, Index indexb, RelationshipType typeb)
 	{
 		Transaction tx = graphDb.beginTx(); // why not implements AutoClosable?
-		
+		Preconditions.checkArgument( typea != null || typeb != null, "Relationship types are null" );
 		try {
 			// looking for nodes in index:
 			IndexHits <Node> hitsa = indexa.get( NODE_NAME, dianodea.getName() );
@@ -189,10 +192,11 @@ public class Neo4JStore implements DiaStore
 				throw new IllegalArgumentException( "Node [" + dianodeb.getName() + "] not found in database.");
 			}
 
-			getRelationship(nodeA, nodeB, typea);
-			if(typeb != null) {
+			if(typea != null)
+				getRelationship(nodeA, nodeB, typea);
+				
+			if(typeb != null)
 				getRelationship(nodeB, nodeA, typeb);
-			}
 
 			tx.success();
 		}
@@ -206,21 +210,23 @@ public class Neo4JStore implements DiaStore
 	{
 		
 		Relationship relationship = null;
-		for(Relationship rel : nodea.getRelationships( type, Direction.OUTGOING ))
-		{
-			if(rel.getEndNode().equals( nodeb ))
+		Iterable <Relationship> relationships = nodea.getRelationships( type, Direction.OUTGOING );
+		if(relationships != null)
+			for(Relationship rel : relationships)
 			{
-				relationship = rel;
-				break;
+				if(rel.getEndNode().equals( nodeb ))
+				{
+					relationship = rel;
+					break;
+				}
 			}
-		}
 		
 		if(relationship == null)
 		{
 			relationship = nodea.createRelationshipTo( nodeb, type );
-			log.trace( "Created new " + type + " relation: [" + nodea.getId() + ":" + nodea.getProperty(NODE_NAME) + "] -> [" + nodeb.getId() + ":" + nodeb.getProperty(NODE_NAME) + "]." );
+			log.trace( "Created new [" + type + "] relation: [" + nodea.getId() + ":" + nodea.getProperty(NODE_NAME) + "] -> [" + nodeb.getId() + ":" + nodeb.getProperty(NODE_NAME) + "]." );
 		} else {
-			log.trace( "Updated existing " + type + " relation: [" + nodea.getId() + ":" + nodea.getProperty(NODE_NAME) + "] -> [" + nodeb.getId() + ":" + nodeb.getProperty(NODE_NAME) + "]." );
+			log.trace( "Updated existing [" + type + "] relation: [" + nodea.getId() + ":" + nodea.getProperty(NODE_NAME) + "] -> [" + nodeb.getId() + ":" + nodeb.getProperty(NODE_NAME) + "]." );
 		}
 		
 		return relationship;

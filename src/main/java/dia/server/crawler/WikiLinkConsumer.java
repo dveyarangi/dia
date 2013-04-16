@@ -39,8 +39,10 @@ public class WikiLinkConsumer implements ILinkConsumer
 				return 0;
 			}
 			CategoryNode node = new CategoryNode(parts[1]);
-				
 			store.updateCategoryNode( node );
+			
+			if(homeNode instanceof CategoryNode) 
+				store.addSubcategory((CategoryNode)homeNode, node);
 			
 			return 1;
 		}
@@ -48,9 +50,9 @@ public class WikiLinkConsumer implements ILinkConsumer
 		ArticleNode node = new ArticleNode( name, baseUrl + url, language );
 		store.updateArticleNode( node );
 		if(homeNode instanceof ArticleNode) {
-			store.hyperlinkNodes( homeNode, node );
+			store.addHyperlink( homeNode, node );
 		} else {
-			store.addToCategory( homeNode, node);
+			store.addToCategory( (CategoryNode)homeNode, node);
 		}
 		
 		if(log.isTraceEnabled()) {

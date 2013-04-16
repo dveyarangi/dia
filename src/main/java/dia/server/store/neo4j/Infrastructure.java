@@ -15,12 +15,16 @@ public class Infrastructure
 	
 	public static final RelationshipType HYPERLINK = createRelationshipType("hyperlink"); // internet link
 	
-	public static final RelationshipType IN_CATEGORY = createRelationshipType("in_category"); // internet link
+	public static final RelationshipType IN_CATEGORY = createRelationshipType("in_category"); // category member
+	public static final RelationshipType SUBCATEGORY_OF = createRelationshipType("subcategory_of"); // category member
 	
 	
 	private static RelationshipType createRelationshipType(final String name)
 	{
 		
-		return new RelationshipType() { @Override public String name() { return name; }};
+		return new RelationshipType() { 
+			@Override public String name() { return name; }
+			@Override public String toString() { return name; }
+		};
 	}
 }
