@@ -72,13 +72,13 @@ public class Dia
 		ILinkConsumer consumer = new WikiLinkConsumer( store, language );
 		
 		// starting node for tests:
-		CategoryNode rootNode = new CategoryNode( "Physics" );
 		String rootUrl = "http://en.wikipedia.org/wiki/Category:Physics";
+		CategoryNode rootNode = new CategoryNode( "Physics", rootUrl );
 		
 		store.updateCategoryNode( rootNode );
 		
 		// do crawl:
-		int count = crawler.extractLinks( rootNode, rootUrl, consumer );
+		int count = crawler.extractLinks( rootUrl, consumer );
 		
 		System.out.println("Links processed: " + count);
 	}

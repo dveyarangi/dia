@@ -12,15 +12,16 @@ public interface DiaStore
 	public void init(DiaConfig config);
 	public void destroy();
 
+	public DNode getNode(String parentName);
 	
-	public void updateArticleNode(ArticleNode dianode);
-	public void updateCategoryNode(CategoryNode dianode);
+	public boolean updateArticleNode(ArticleNode dianode);
+	public boolean updateCategoryNode(CategoryNode dianode);
 	
-	public void addHyperlink(DNode dianodea, DNode dianodeb);
+	public boolean addHyperlink(DNode dianodea, DNode dianodeb);
 	/**
 	 * @param homeNode
 	 * @param node
 	 */
-	public void addToCategory(CategoryNode category, ArticleNode article);
-	public void addSubcategory(CategoryNode category, CategoryNode subcategory);
+	public boolean addToCategory(CategoryNode category, ArticleNode article);
+	public boolean addSubcategory(CategoryNode category, CategoryNode subcategory);
 }

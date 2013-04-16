@@ -25,42 +25,72 @@ public class WikiLinkConsumer implements ILinkConsumer
 	}
 
 	@Override
-	public int consume(DNode homeNode, String url)
+	public String consume(String parentName, String url)
 	{
-		if( !url.startsWith( "/wiki" ) ) {
-			return 0;
+		// preparing parent node:
+		DNode parentNode = parentName == null ? null : store.getNode(parentName);
+		
+		if(!url.startsWith( baseUrl )) // not wiki link
+			return null;
+		
+		String relativeUrl = url.substring(baseUrl.length());
+		if( !relativeUrl.startsWith( "/wiki" ) ) {
+			return null;
 		}
 		
-		String name = url.substring(6);
-		if( name.contains( ":" ) )
+		// cutting out node name:
+		String name = url.substring(baseUrl.length() + 6);
+		
+		DNode node;
+		
+		if( name.contains( ":" ) ) // special page:
 		{
-			String [] parts = name.split(":");
+			String [] parts = name.split("#")[0].split( ":" );
 			if(!parts[0].equals("Category")) {
-				return 0;
+				return null;
 			}
-			CategoryNode node = new CategoryNode(parts[1]);
-			store.updateCategoryNode( node );
 			
-			if(homeNode instanceof CategoryNode) 
-				store.addSubcategory((CategoryNode)homeNode, node);
-			
-			return 1;
+			node = createCategoryNode( parts[0], url, parentNode );
 		}
+		else
+			node = createArticleNode( name, url, parentNode );
 		
-		ArticleNode node = new ArticleNode( name, baseUrl + url, language );
-		store.updateArticleNode( node );
-		if(homeNode instanceof ArticleNode) {
-			store.addHyperlink( homeNode, node );
-		} else {
-			store.addToCategory( (CategoryNode)homeNode, node);
-		}
-		
-		if(log.isTraceEnabled()) {
+		if(node != null)
 			log.trace( "Consumed link -> " + node + "");
-		}
+		else
+			log.trace( "Node for url [" + url + "] already exists.");
 		
 				
-		return 1;
+		return node != null ? node.getName() : null;
+	}
+	
+	private DNode createCategoryNode(String name, String url, DNode parentNode)
+	{
+		CategoryNode node = new CategoryNode(name, url);
+		boolean isNew = store.updateCategoryNode( node );
+		
+		if(parentNode != null && parentNode instanceof CategoryNode) 
+			store.addSubcategory((CategoryNode)parentNode, node);
+		
+		return isNew ? node : null;
+	}
+	
+	private DNode createArticleNode(String name, String url, DNode parentNode)
+	{
+		ArticleNode node = new ArticleNode( name, url, language );
+		boolean isNew = store.updateArticleNode( node );
+		if(parentNode != null)
+		{
+			if(parentNode instanceof ArticleNode) 
+			{
+				store.addHyperlink( parentNode, node );
+			} else {
+				store.addToCategory( (CategoryNode)parentNode, node);
+			}
+		}
+		
+		return isNew ? node : null;
+
 	}
 
 }

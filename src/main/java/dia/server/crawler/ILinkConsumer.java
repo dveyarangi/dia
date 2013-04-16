@@ -15,6 +15,6 @@ public interface ILinkConsumer
 	 * @param url
 	 * @return
 	 */
-	public int consume(DNode homeNode, String url);
+	public String consume(String parentName, String url);
 
 }

@@ -61,16 +61,45 @@ public class Neo4JStore implements DiaStore
 
 
 	@Override
-	public void updateArticleNode(ArticleNode dianode)
+	public DNode getNode(String nodeName)
+	{
+		Preconditions.checkNotNull( nodeName, "Node name must not be null." );
+		
+		IndexHits <Node> hits = articles.get( NODE_NAME, nodeName );
+		Node neonode = hits.getSingle();
+		if(neonode == null)
+			return null;
+		
+		String nodeType = (String)neonode.getProperty( NODE_TYPE );
+		
+		switch(nodeType)
+		{
+		case DNode.TYPE_ARTICLE:
+			return new ArticleNode( nodeName, 
+						(String)neonode.getProperty( NODE_URL ), 
+						(String)neonode.getProperty( NODE_LANG ) );
+		case DNode.TYPE_CATEGORY:
+			return new CategoryNode( nodeName, (String)neonode.getProperty( NODE_URL ) );
+		default:
+			log.warn( "Unknown node [" + nodeName + "] type [" + nodeType + "]." );
+			return null;
+		}
+	}
+
+	@Override
+	public boolean updateArticleNode(ArticleNode dianode)
 	{
 		String nodeName = dianode.getName();
 		
 		Transaction tx = graphDb.beginTx(); // why not implements AutoClosable?
 		
+		boolean added = false;
+		
 		try {
 			// checking if node already exists:
 			IndexHits <Node> hits = articles.get( NODE_NAME, nodeName );
 			Node neonode = hits.getSingle();
+			
 			
 			if(neonode == null)
 			{
@@ -83,8 +112,13 @@ public class Neo4JStore implements DiaStore
 				articles.add( neonode, NODE_NAME, nodeName );
 				
 				log.trace( "Created new article node [" + neonode.getId() + ":" + dianode.getName() + "]." );
-			} else {
+				
+				added = true;
+			} 
+			else 
+			{
 				log.trace( "Updated existing article node [" + neonode.getId() + ":" + dianode.getName() + "]." );
+				added = false;
 			}
 			
 			// setting values:
@@ -93,15 +127,19 @@ public class Neo4JStore implements DiaStore
 			tx.success();
 		}
 		finally { tx.finish(); }
+		
+		return added;
 	}
 	
 	
 	@Override
-	public void updateCategoryNode(CategoryNode dianode)
+	public boolean updateCategoryNode(CategoryNode dianode)
 	{
 		String nodeName = dianode.getName();
 		
 		Transaction tx = graphDb.beginTx(); // why not implements AutoClosable?
+		
+		boolean added = false;
 		
 		try {
 			// checking if node already exists:
@@ -118,9 +156,14 @@ public class Neo4JStore implements DiaStore
 				// updating index:
 				categories.add( neonode, NODE_NAME, nodeName );
 				
+				added = true;
+				
 				log.trace( "Created new category node [" + neonode.getId() + ":" + dianode.getName() + "]." );
-			} else {
+			} 
+			else
+			{
 				log.trace( "Updated existing category node [" + neonode.getId() + ":" + dianode.getName() + "]." );
+				added = false;
 			}
 			
 			// setting values:
@@ -129,6 +172,8 @@ public class Neo4JStore implements DiaStore
 			tx.success();
 		}
 		finally { tx.finish(); }
+		
+		return added;
 	}
 
 	/**
@@ -153,31 +198,34 @@ public class Neo4JStore implements DiaStore
 		neonode.setProperty( NODE_TYPE, dianode.getType() );
 		neonode.setProperty( NODE_NAME, dianode.getName() );
 //		neonode.setProperty( NODE_LANG, dianode.getLanguage());
-//		neonode.setProperty( NODE_URL, dianode.getUrl());
+		neonode.setProperty( NODE_URL, dianode.getUrl());
 	}
 	
 	@Override
-	public void addHyperlink(DNode dianodea, DNode dianodeb)
+	public boolean addHyperlink(DNode dianodea, DNode dianodeb)
 	{
-		linkNodes(dianodea, articles, HYPERLINK, dianodeb, articles, null);
+		return linkNodes(dianodea, articles, HYPERLINK, dianodeb, articles, null);
 	}
+	
 	@Override
-	public void addToCategory(CategoryNode category, ArticleNode dianode)
+	public boolean addToCategory(CategoryNode category, ArticleNode dianode)
 	{
-		linkNodes(category, categories, null, dianode, articles, IN_CATEGORY);
+		return linkNodes(category, categories, null, dianode, articles, IN_CATEGORY);
 
 	}
 	
 	@Override
-	public void addSubcategory(CategoryNode category, CategoryNode subcategory)
+	public boolean addSubcategory(CategoryNode category, CategoryNode subcategory)
 	{
-		linkNodes(category, categories, null, subcategory, categories, SUBCATEGORY_OF);
+		return linkNodes(category, categories, null, subcategory, categories, SUBCATEGORY_OF);
 	}
 	///////////////////////////////////////////////////////////////
-	private void linkNodes(DNode dianodea, Index indexa, RelationshipType typea, DNode dianodeb, Index indexb, RelationshipType typeb)
+	private boolean linkNodes(DNode dianodea, Index indexa, RelationshipType typea, DNode dianodeb, Index indexb, RelationshipType typeb)
 	{
 		Transaction tx = graphDb.beginTx(); // why not implements AutoClosable?
 		Preconditions.checkArgument( typea != null || typeb != null, "Relationship types are null" );
+		
+		boolean added = false;
 		try {
 			// looking for nodes in index:
 			IndexHits <Node> hitsa = indexa.get( NODE_NAME, dianodea.getName() );
@@ -193,10 +241,10 @@ public class Neo4JStore implements DiaStore
 			}
 
 			if(typea != null)
-				getRelationship(nodeA, nodeB, typea);
+				added |= updateRelationship(nodeA, nodeB, typea);
 				
 			if(typeb != null)
-				getRelationship(nodeB, nodeA, typeb);
+				added |= updateRelationship(nodeB, nodeA, typeb);
 
 			tx.success();
 		}
@@ -204,11 +252,14 @@ public class Neo4JStore implements DiaStore
 		{
 			tx.finish();
 		}
+		
+		return added;
 	}
 	
-	private Relationship getRelationship(Node nodea, Node nodeb, RelationshipType type)
+	private boolean updateRelationship(Node nodea, Node nodeb, RelationshipType type)
 	{
 		
+		boolean added = false;
 		Relationship relationship = null;
 		Iterable <Relationship> relationships = nodea.getRelationships( type, Direction.OUTGOING );
 		if(relationships != null)
@@ -225,11 +276,15 @@ public class Neo4JStore implements DiaStore
 		{
 			relationship = nodea.createRelationshipTo( nodeb, type );
 			log.trace( "Created new [" + type + "] relation: [" + nodea.getId() + ":" + nodea.getProperty(NODE_NAME) + "] -> [" + nodeb.getId() + ":" + nodeb.getProperty(NODE_NAME) + "]." );
-		} else {
+			added = true;
+		} 
+		else 
+		{
 			log.trace( "Updated existing [" + type + "] relation: [" + nodea.getId() + ":" + nodea.getProperty(NODE_NAME) + "] -> [" + nodeb.getId() + ":" + nodeb.getProperty(NODE_NAME) + "]." );
+			added = false;
 		}
 		
-		return relationship;
+		return added;
 		
 	}
 	

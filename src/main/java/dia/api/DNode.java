@@ -12,21 +12,27 @@ public class DNode
 	private final String name;
 	
 	private final String type;
+	
+	private final String url;
 
-	public DNode(String _name, String _type)
+	public DNode(String _name, String _type, String _url)
 	{
 		name = Preconditions.checkNotNull( _name );
 		type = Preconditions.checkNotNull( _type );
+		url = Preconditions.checkNotNull(_url);
 	}
 	
+		
 //	public long getId() { return id; }
 
 	public String getName() { return name; }
 	
 	public String getType() { return type; }
 
+	public String getUrl() { return url; }
 	
 	@Override
 	public int hashCode() { return name.hashCode(); }
+
 
 }

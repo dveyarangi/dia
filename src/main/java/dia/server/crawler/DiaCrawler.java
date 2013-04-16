@@ -2,6 +2,8 @@ package dia.server.crawler;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.LinkedHashMap;
+
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -24,6 +26,8 @@ public class DiaCrawler
 	private final HttpClient httpClient;
 
 	private final Logger log = Logger.getLogger( this.getClass() );
+	
+	private LinkedHashMap <String, String> linksQueue = new LinkedHashMap <String, String> ();
 
 	public DiaCrawler()
 	{
@@ -45,30 +49,64 @@ public class DiaCrawler
 	 * @param consumer
 	 * @return number of links processed
 	 */
-	public int extractLinks(DNode homeNode, String url, ILinkConsumer consumer)
+	public int extractLinks(String startingUrl, ILinkConsumer consumer)
 	{
-		log.trace( "Extracting links from [" + url + "]." );
+		linksQueue.put( startingUrl, null );
+
+		int totalCount = 0;
 		
-		// reading html to string:
-		String body = readUrl(url);
-		
-		// parsing the received html:
-		Document doc = Jsoup.parse( body );
-		
-		// walking over links:
-		Elements links = doc.select("a[href]");
-		
-		int count = 0;
-		for(int idx = 0; idx < links.size(); idx ++)
-		{
-			Element link = links.get( idx );
-			String ref = link.attr( "href" );
+		while(!linksQueue.isEmpty()) {
 			
-			// sending link to the link processor:
-			count += consumer.consume( homeNode, ref );
+			String url = linksQueue.keySet().iterator().next();
+			String parentName = linksQueue.get( url );
+			
+			linksQueue.remove( url );
+			
+			// reading html to string:
+			Document doc;
+			try
+			{
+				doc = Jsoup.connect(url).get();
+			} catch ( IOException e )
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				continue;
+			}
+			
+//			String body = readUrl(url);
+			
+			// parsing the received html:
+//			Jsoup.parse( body );
+			
+			// walking over links:
+			Elements links = doc.select("a[href]");
+			
+			int count = 0;
+			log.debug( "Extracting links from [" + url + "] (" + links.size() + " found): " );
+			
+			for(int idx = 0; idx < links.size(); idx ++)
+			{
+				Element link = links.get( idx );
+				String ref = link.attr( "abs:href" );
+				
+				// sending link to the link processor:
+				String nodeName = consumer.consume( parentName, ref );
+				if(nodeName == null)
+					continue;
+				System.out.print(".");
+				linksQueue.put( ref, nodeName );
+				
+				count ++;
+			}
+			System.out.println("");
+			
+			
+			log.debug( "Extracted [" + count + "] links; queue size [" + linksQueue.size() + "]." );
+			totalCount += count;
 		}
 		
-		return count;
+		return totalCount;
 	}
 	
 	/**
@@ -100,7 +138,7 @@ public class DiaCrawler
 			method.releaseConnection();
 		}
 		
-		return new String(buffer.toByteArray()); // TODO: specify encoding?
+		return new String(buffer.toByteArray()); // TODO: specify encoding
 
 	}
 
