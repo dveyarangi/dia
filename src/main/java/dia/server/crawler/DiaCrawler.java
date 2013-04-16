@@ -52,6 +52,7 @@ public class DiaCrawler
 		linksQueue.put( startingUrl, null );
 
 		int totalCount = 0;
+		int processedCount = 0;
 		
 		while(!linksQueue.isEmpty()) {
 			
@@ -80,8 +81,8 @@ public class DiaCrawler
 			// walking over links:
 			Elements links = doc.select("a[href]");
 			
-			int nodesCount = 0, linksCount = 0;
-			log.debug( "Processing links from [" + url + "] (" + links.size() + " found): " );
+			int nodesCount = 0;
+			log.debug( "(" + processedCount + ") Processing links from [" + url + "] (" + links.size() + " found): " );
 			int percentageCount = 0;
 			System.out.print("[");
 			
@@ -107,6 +108,8 @@ public class DiaCrawler
 			}
 			System.out.println("]");
 			consumer.finish();
+			
+			processedCount ++;
 			
 			log.debug( "Extracted [" + nodesCount + "] nodes; queue size [" + linksQueue.size() + "]." );
 			totalCount += nodesCount;
