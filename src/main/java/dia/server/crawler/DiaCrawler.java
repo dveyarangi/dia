@@ -49,17 +49,17 @@ public class DiaCrawler
 	 */
 	public int extractLinks(String startingUrl, ILinkConsumer consumer)
 	{
-		linksQueue.put( startingUrl, null );
+		linksQueue.put( "ROOT", startingUrl );
 
 		int totalCount = 0;
 		int processedCount = 0;
 		
 		while(!linksQueue.isEmpty()) {
 			
-			String url = linksQueue.keySet().iterator().next();
-			String parentName = linksQueue.get( url );
+			String parentName = linksQueue.keySet().iterator().next();
+			String url = linksQueue.get( parentName );
 			
-			linksQueue.remove( url );
+			linksQueue.remove( parentName );
 			
 			// reading html to string:
 			Document doc;
@@ -102,7 +102,7 @@ public class DiaCrawler
 				
 				if(nodeName == null)
 					continue;
-				linksQueue.put( ref, nodeName );
+				linksQueue.put( nodeName, ref );
 				
 				nodesCount ++;
 			}

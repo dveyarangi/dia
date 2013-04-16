@@ -55,12 +55,12 @@ public class WikiLinkConsumer implements ILinkConsumer
 		boolean isCategory = false;
 		if( name.contains( ":" ) ) // special page:
 		{
-			String [] parts = name.split("#")[0].split( ":" );
-			if(!parts[0].equals("Category")) {
+			String parts = name.split("#")[0];
+			if(!parts.split( ":" )[0].equals("Category")) {
 				return null;
 			}
 			
-			name = parts[1];
+			name = parts;
 			isCategory = true;
 		}
 		
