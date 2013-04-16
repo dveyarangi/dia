@@ -1,5 +1,7 @@
 package dia.server.store;
 
+import org.neo4j.graphdb.Transaction;
+
 import dia.api.ArticleNode;
 import dia.api.CategoryNode;
 import dia.api.DNode;
@@ -24,4 +26,5 @@ public interface DiaStore
 	 */
 	public boolean addToCategory(CategoryNode category, ArticleNode article);
 	public boolean addSubcategory(CategoryNode category, CategoryNode subcategory);
+	public Transaction startTransaction();
 }

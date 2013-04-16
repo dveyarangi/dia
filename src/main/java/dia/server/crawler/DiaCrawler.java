@@ -85,6 +85,7 @@ public class DiaCrawler
 			int percentageCount = 0;
 			System.out.print("[");
 			
+			consumer.start();
 			for(int idx = 0; idx < links.size(); idx ++)
 			{
 				Element link = links.get( idx );
@@ -105,7 +106,7 @@ public class DiaCrawler
 				nodesCount ++;
 			}
 			System.out.println("]");
-			
+			consumer.finish();
 			
 			log.debug( "Extracted [" + nodesCount + "] nodes; queue size [" + linksQueue.size() + "]." );
 			totalCount += nodesCount;

@@ -10,11 +10,15 @@ import dia.api.DNode;
  */
 public interface ILinkConsumer
 {
+	public void start();
+	
 	/**
 	 * Consumes a link, return number of used links
 	 * @param url
 	 * @return
 	 */
 	public String consume(String parentName, String url);
+	
+	public void finish();
 
 }

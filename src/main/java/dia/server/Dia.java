@@ -1,5 +1,7 @@
 package dia.server;
 
+import org.neo4j.graphdb.Transaction;
+
 import dia.api.CategoryNode;
 import dia.server.config.DiaConfig;
 import dia.server.crawler.DiaCrawler;
@@ -75,7 +77,10 @@ public class Dia
 		String rootUrl = "http://en.wikipedia.org/wiki/Category:Physics";
 		CategoryNode rootNode = new CategoryNode( "Physics", rootUrl );
 		
+		Transaction tx = store.startTransaction();
 		store.updateCategoryNode( rootNode );
+		tx.success();
+		tx.finish();
 		
 		// do crawl:
 		int count = crawler.extractLinks( rootUrl, consumer );

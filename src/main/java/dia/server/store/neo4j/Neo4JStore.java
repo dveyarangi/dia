@@ -25,7 +25,7 @@ import dia.server.store.DiaStore;
 public class Neo4JStore implements DiaStore
 {
 	
-	public static final String DB_PATH = "./data/storage/neo4j";
+	public static final String DB_PATH = "./data/storage/neo4j/wiki";
 	
 	/**
 	 * Embedded Neo4j service.
@@ -40,6 +40,7 @@ public class Neo4JStore implements DiaStore
 	private Index <Node> categories;
 	
 	private final Logger log = Logger.getLogger( this.getClass() );
+	
 	
 	@Override
 	public void init(DiaConfig config)
@@ -91,11 +92,10 @@ public class Neo4JStore implements DiaStore
 	{
 		String nodeName = dianode.getName();
 		
-		Transaction tx = graphDb.beginTx(); // why not implements AutoClosable?
-		
 		boolean added = false;
-		
-		try {
+
+/*		Transaction tx = graphDb.beginTx(); // why not implements AutoClosable?
+		try {*/
 			// checking if node already exists:
 			IndexHits <Node> hits = articles.get( NODE_NAME, nodeName );
 			Node neonode = hits.getSingle();
@@ -124,9 +124,9 @@ public class Neo4JStore implements DiaStore
 			// setting values:
 			updateNodeProperties( neonode, dianode );
 
-			tx.success();
+/*			tx.success();
 		}
-		finally { tx.finish(); }
+		finally { tx.finish(); }*/
 		
 		return added;
 	}
@@ -137,11 +137,11 @@ public class Neo4JStore implements DiaStore
 	{
 		String nodeName = dianode.getName();
 		
-		Transaction tx = graphDb.beginTx(); // why not implements AutoClosable?
-		
 		boolean added = false;
 		
-		try {
+/*		Transaction tx = graphDb.beginTx(); // why not implements AutoClosable?
+		
+		try {*/
 			// checking if node already exists:
 			IndexHits <Node> hits = categories.get( NODE_NAME, nodeName );
 			Node neonode = hits.getSingle();
@@ -169,9 +169,9 @@ public class Neo4JStore implements DiaStore
 			// setting values:
 			updateNodeProperties( neonode, dianode );
 
-			tx.success();
+/*			tx.success();
 		}
-		finally { tx.finish(); }
+		finally { tx.finish(); }*/
 		
 		return added;
 	}
@@ -222,11 +222,12 @@ public class Neo4JStore implements DiaStore
 	///////////////////////////////////////////////////////////////
 	private boolean linkNodes(DNode dianodea, Index indexa, RelationshipType typea, DNode dianodeb, Index indexb, RelationshipType typeb)
 	{
-		Transaction tx = graphDb.beginTx(); // why not implements AutoClosable?
 		Preconditions.checkArgument( typea != null || typeb != null, "Relationship types are null" );
 		
 		boolean added = false;
-		try {
+
+/*		Transaction tx = graphDb.beginTx(); // why not implements AutoClosable?
+		try {*/
 			// looking for nodes in index:
 			IndexHits <Node> hitsa = indexa.get( NODE_NAME, dianodea.getName() );
 			Node nodeA = hitsa.getSingle();
@@ -246,12 +247,12 @@ public class Neo4JStore implements DiaStore
 			if(typeb != null)
 				added |= updateRelationship(nodeB, nodeA, typeb);
 
-			tx.success();
+/*			tx.success();
 		}
 		finally
 		{
 			tx.finish();
-		}
+		}*/
 		
 		return added;
 	}
@@ -296,6 +297,12 @@ public class Neo4JStore implements DiaStore
 		
 //		DNode node = store.retrieveNode( "Test1" );
 //		System.out.println(node);
+	}
+
+	@Override
+	public Transaction startTransaction()
+	{
+		return graphDb.beginTx();
 	}
 
 }

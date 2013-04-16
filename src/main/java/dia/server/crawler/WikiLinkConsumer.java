@@ -1,6 +1,9 @@
 package dia.server.crawler;
 
+import java.util.HashSet;
+
 import org.apache.log4j.Logger;
+import org.neo4j.graphdb.Transaction;
 
 import dia.api.ArticleNode;
 import dia.api.CategoryNode;
@@ -17,12 +20,18 @@ public class WikiLinkConsumer implements ILinkConsumer
 	
 	private final Logger log = Logger.getLogger( this.getClass() );
 	
+	private HashSet <String> names = new HashSet <String> ();
+	
+	private Transaction tx;
+	
 	public WikiLinkConsumer(DiaStore _store, String _language)
 	{
 		store = _store;
 		language = _language;
 		baseUrl = "http://" + language + ".wikipedia.org";
 	}
+	
+	
 
 	@Override
 	public String consume(String parentName, String url)
@@ -42,7 +51,8 @@ public class WikiLinkConsumer implements ILinkConsumer
 		String name = url.substring(baseUrl.length() + 6);
 		
 		DNode node;
-		
+
+		boolean isCategory = false;
 		if( name.contains( ":" ) ) // special page:
 		{
 			String [] parts = name.split("#")[0].split( ":" );
@@ -50,10 +60,18 @@ public class WikiLinkConsumer implements ILinkConsumer
 				return null;
 			}
 			
-			node = createCategoryNode( parts[0], url, parentNode );
+			name = parts[1];
+			isCategory = true;
 		}
-		else
+		
+		if(names.contains( name ))
+			return null;
+	
+		if(isCategory)
+			node = createCategoryNode( name, url, parentNode );
+		else 
 			node = createArticleNode( name, url, parentNode );
+
 		
 		if(node != null)
 			log.trace( "Consumed link -> " + node + "");
@@ -91,6 +109,20 @@ public class WikiLinkConsumer implements ILinkConsumer
 		
 		return isNew ? node : null;
 
+	}
+
+	@Override
+	public void start()
+	{
+		tx = store.startTransaction();
+	}
+
+	@Override
+	public void finish()
+	{
+		tx.success();
+		tx.finish();
+		names.clear();
 	}
 
 }
