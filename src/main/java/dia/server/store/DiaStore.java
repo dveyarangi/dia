@@ -5,13 +5,13 @@ import org.neo4j.graphdb.Transaction;
 import dia.api.ArticleNode;
 import dia.api.CategoryNode;
 import dia.api.DNode;
-import dia.server.config.DiaConfig;
+import dia.server.config.StoreConfig;
 
 public interface DiaStore
 {
 	
 	
-	public void init(DiaConfig config);
+	public void init(StoreConfig config);
 	public void destroy();
 
 	public DNode getNode(String parentName);

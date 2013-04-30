@@ -15,17 +15,17 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import dia.server.config.DiaConfig;
+import dia.server.config.CrawlerConfig;
 
 public class DiaCrawler
 {
-	private DiaConfig config;
+	private CrawlerConfig config;
 	
 	private final HttpClient httpClient;
 
 	private final Logger log = Logger.getLogger( this.getClass() );
 	
-	private LinkedHashMap <String, String> linksQueue = new LinkedHashMap <String, String> ();
+	private final LinkedHashMap <String, String> linksQueue = new LinkedHashMap <String, String> ();
 
 	public DiaCrawler()
 	{
@@ -35,7 +35,7 @@ public class DiaCrawler
 	/**
 	 * @param config
 	 */
-	public void init(DiaConfig config)
+	public void init(CrawlerConfig config)
 	{
 		this.config = config;
 	}
@@ -100,8 +100,9 @@ public class DiaCrawler
 					System.out.print(".");
 				}
 				
-				if(nodeName == null)
+				if(nodeName == null) {
 					continue;
+				}
 				linksQueue.put( nodeName, ref );
 				
 				nodesCount ++;

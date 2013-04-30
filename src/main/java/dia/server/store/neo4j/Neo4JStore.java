@@ -1,6 +1,12 @@
 package dia.server.store.neo4j;
 
-import static dia.server.store.neo4j.Infrastructure.*;
+import static dia.server.store.neo4j.Infrastructure.HYPERLINK;
+import static dia.server.store.neo4j.Infrastructure.IN_CATEGORY;
+import static dia.server.store.neo4j.Infrastructure.NODE_LANG;
+import static dia.server.store.neo4j.Infrastructure.NODE_NAME;
+import static dia.server.store.neo4j.Infrastructure.NODE_TYPE;
+import static dia.server.store.neo4j.Infrastructure.NODE_URL;
+import static dia.server.store.neo4j.Infrastructure.SUBCATEGORY_OF;
 
 import org.apache.log4j.Logger;
 import org.neo4j.graphdb.Direction;
@@ -19,13 +25,13 @@ import com.google.common.base.Preconditions;
 import dia.api.ArticleNode;
 import dia.api.CategoryNode;
 import dia.api.DNode;
-import dia.server.config.DiaConfig;
+import dia.server.config.StoreConfig;
 import dia.server.store.DiaStore;
 
 public class Neo4JStore implements DiaStore
 {
 	
-	public static final String DB_PATH = "./data/storage/neo4j/wiki";
+//	public static final String DB_PATH = "./data/storage/neo4j/wiki";
 	
 	/**
 	 * Embedded Neo4j service.
@@ -43,9 +49,9 @@ public class Neo4JStore implements DiaStore
 	
 	
 	@Override
-	public void init(DiaConfig config)
+	public void init(StoreConfig config)
 	{
-		graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
+		graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( config.getRootPath() );
 		
 		IndexManager index = graphDb.index();
 		
@@ -68,16 +74,17 @@ public class Neo4JStore implements DiaStore
 		
 		IndexHits <Node> hits = articles.get( NODE_NAME, nodeName );
 		Node neonode = hits.getSingle();
-		if(neonode == null)
+		if(neonode == null) {
 			return null;
+		}
 		
 		String nodeType = (String)neonode.getProperty( NODE_TYPE );
 		
 		switch(nodeType)
 		{
 		case DNode.TYPE_ARTICLE:
-			return new ArticleNode( nodeName, 
-						(String)neonode.getProperty( NODE_URL ), 
+			return new ArticleNode( nodeName,
+						(String)neonode.getProperty( NODE_URL ),
 						(String)neonode.getProperty( NODE_LANG ) );
 		case DNode.TYPE_CATEGORY:
 			return new CategoryNode( nodeName, (String)neonode.getProperty( NODE_URL ) );
@@ -114,8 +121,8 @@ public class Neo4JStore implements DiaStore
 				log.trace( "Created new article node [" + neonode.getId() + ":" + dianode.getName() + "]." );
 				
 				added = true;
-			} 
-			else 
+			}
+			else
 			{
 				log.trace( "Updated existing article node [" + neonode.getId() + ":" + dianode.getName() + "]." );
 				added = false;
@@ -159,7 +166,7 @@ public class Neo4JStore implements DiaStore
 				added = true;
 				
 				log.trace( "Created new category node [" + neonode.getId() + ":" + dianode.getName() + "]." );
-			} 
+			}
 			else
 			{
 				log.trace( "Updated existing category node [" + neonode.getId() + ":" + dianode.getName() + "]." );
@@ -241,11 +248,13 @@ public class Neo4JStore implements DiaStore
 				throw new IllegalArgumentException( "Node [" + dianodeb.getName() + "] not found in database.");
 			}
 
-			if(typea != null)
+			if(typea != null) {
 				added |= updateRelationship(nodeA, nodeB, typea);
+			}
 				
-			if(typeb != null)
+			if(typeb != null) {
 				added |= updateRelationship(nodeB, nodeA, typeb);
+			}
 
 /*			tx.success();
 		}
@@ -263,7 +272,7 @@ public class Neo4JStore implements DiaStore
 		boolean added = false;
 		Relationship relationship = null;
 		Iterable <Relationship> relationships = nodea.getRelationships( type, Direction.OUTGOING );
-		if(relationships != null)
+		if(relationships != null) {
 			for(Relationship rel : relationships)
 			{
 				if(rel.getEndNode().equals( nodeb ))
@@ -272,14 +281,15 @@ public class Neo4JStore implements DiaStore
 					break;
 				}
 			}
+		}
 		
 		if(relationship == null)
 		{
 			relationship = nodea.createRelationshipTo( nodeb, type );
 			log.trace( "Created new [" + type + "] relation: [" + nodea.getId() + ":" + nodea.getProperty(NODE_NAME) + "] -> [" + nodeb.getId() + ":" + nodeb.getProperty(NODE_NAME) + "]." );
 			added = true;
-		} 
-		else 
+		}
+		else
 		{
 			log.trace( "Updated existing [" + type + "] relation: [" + nodea.getId() + ":" + nodea.getProperty(NODE_NAME) + "] -> [" + nodeb.getId() + ":" + nodeb.getProperty(NODE_NAME) + "]." );
 			added = false;

@@ -1,18 +1,35 @@
 package dia.server.config;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import com.google.gson.Gson;
 
 public class DiaConfig
 {
-	public static final String DATABASE_PATH = "./data/storage/neo4j";
 	
-	public Gson gson;
+	private CrawlerConfig crawler;
 	
-	public DiaConfig()
+	private StoreConfig storage;
+	
+	public static DiaConfig load(String configFilename)
 	{
 		// TODO: make useful configuration
-		gson = new Gson();
+		Gson gson = new Gson();
+		
+		InputStream stream = DiaConfig.class.getClassLoader().getResourceAsStream(configFilename);
+		if(stream == null) {
+			throw new IllegalArgumentException("Configuration file [" + configFilename + "] not found.");
+		}
+		
+		DiaConfig config = gson.fromJson(new InputStreamReader(stream), DiaConfig.class);
+		
+		return config;
 	}
 	
+	private DiaConfig() {}
 	
+	public CrawlerConfig getCrawlerConf() { return crawler; }
+	
+	public StoreConfig getStoreConf() { return storage; }
 }

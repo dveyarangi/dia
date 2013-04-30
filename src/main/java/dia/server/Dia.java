@@ -43,9 +43,11 @@ public class Dia
 	 */
 	private final DiaCrawler crawler;
 	
+	public static final String CONFIG_FILEPATH = "dia.conf";
+	
 	private Dia()
 	{
-		config = new DiaConfig();
+		config = DiaConfig.load(CONFIG_FILEPATH);
 		
 		store = new Neo4JStore();
 		
@@ -56,9 +58,9 @@ public class Dia
 	{
 		// read config
 		
-		crawler.init(config);
+		crawler.init(config.getCrawlerConf());
 		
-		store.init(config);
+		store.init(config.getStoreConf());
 	}
 	
 	
