@@ -28,7 +28,7 @@ public class WikiLinkConsumer implements ILinkConsumer
 	{
 		store = _store;
 		language = _language;
-		baseUrl = "http://" + language + ".wikipedia.org";
+		baseUrl = "https://" + language + ".wikipedia.org";
 	}
 	
 	
