@@ -15,6 +15,7 @@ local.properties
 .classpath
 .settings/
 .loadpath
+.project
 
 # External tool builders
 .externalToolBuilders/
@@ -169,3 +170,6 @@ pip-log.txt
 *.log
 
 *log*
+/data/**
+.gradle
+

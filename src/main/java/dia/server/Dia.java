@@ -82,7 +82,8 @@ public class Dia
 		Transaction tx = store.startTransaction();
 		store.updateCategoryNode( rootNode );
 		tx.success();
-		tx.finish();
+
+		tx.close();
 		
 		// do crawl:
 		int count = crawler.extractLinks( rootUrl, consumer );

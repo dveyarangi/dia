@@ -30,8 +30,6 @@ public class WikiLinkConsumer implements ILinkConsumer
 		language = _language;
 		baseUrl = "https://" + language + ".wikipedia.org";
 	}
-	
-	
 
 	@Override
 	public String consume(String parentName, String url)
@@ -121,7 +119,7 @@ public class WikiLinkConsumer implements ILinkConsumer
 	public void finish()
 	{
 		tx.success();
-		tx.finish();
+		tx.close();
 		names.clear();
 	}
 

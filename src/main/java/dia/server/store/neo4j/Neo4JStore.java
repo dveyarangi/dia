@@ -8,6 +8,8 @@ import static dia.server.store.neo4j.Infrastructure.NODE_TYPE;
 import static dia.server.store.neo4j.Infrastructure.NODE_URL;
 import static dia.server.store.neo4j.Infrastructure.SUBCATEGORY_OF;
 
+import java.io.File;
+
 import org.apache.log4j.Logger;
 import org.neo4j.graphdb.Direction;
 import org.neo4j.graphdb.GraphDatabaseService;
@@ -51,13 +53,15 @@ public class Neo4JStore implements DiaStore
 	@Override
 	public void init(StoreConfig config)
 	{
-		graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( config.getRootPath() );
+		graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( new File(config.getRootPath()) );
 		
 		IndexManager index = graphDb.index();
 		
+		Transaction tx = startTransaction();
 		articles = index.forNodes( "articles" );
 		
 		categories = index.forNodes( "categories" );
+		tx.close();
 	}
 	
 	@Override
