@@ -51,6 +51,8 @@ public class WikiLinkConsumer implements ILinkConsumer
 		DNode node;
 
 		boolean isCategory = false;
+		if( name.contains( "#" ) ) // cite link
+			return null;
 		if( name.contains( ":" ) ) // special page:
 		{
 			String parts = name.split("#")[0];
